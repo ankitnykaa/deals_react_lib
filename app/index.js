@@ -1,16 +1,23 @@
 'use strict';
+import React from 'react';
+import {AppRegistry,Text,View} from 'react-native';
 
-import React, { Component } from 'react';
-import Grid from './components/Grid'
+const FetchInventoryDetails = require('./DealsInitialiser/FetchInventoryDetails');
 
-var App = React.createClass({
-
-	render: function() {
-		return (
-			<Grid />
+class Main extends React.Component{
+	render(){
+		if(this.props.source =="deals"){
+		   return (	
+			<FetchInventoryDetails data={this.props}/>
 		);
+		}
+		else{
+			return(
+				<View><Text>Not from deals
+				</Text></View>
+			);
+		}
+	
 	}
-
-});
-
-module.exports = App;
+}
+AppRegistry.registerComponent('Main', () => Main);
